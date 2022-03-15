@@ -1,7 +1,11 @@
 const express = require("express");
 const promMid = require('express-prometheus-middleware');
+const cors = require('cors')
+
 
 const app = express();
+app.use(cors())
+
 
 app.use(express.json());
 app.use(promMid({
@@ -18,15 +22,11 @@ const PORT = 5001;
 // In the interest of keeping this as simple as possibly I will just be using the one file usually i would split this up
 
 app.get("/api/v1/time", (req, res) => {
+  console.log('hit')
   try {
     res.status(200).json({
       properties: {
-        epoch: {
-          description:
-            "The current server time, in epoch seconds, at time of processing the request.",
-          type: "number",
-          time: Number(Math.floor(new Date().getTime() / 1000))
-        },
+        epoch: Math.floor(new Date().getTime() / 1000)
       },
       required: ["epoch"],
       type: "object",
