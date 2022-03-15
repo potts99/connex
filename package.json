@@ -1,0 +1,22 @@
+{
+  "name": "connex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-prometheus-middleware": "^1.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
